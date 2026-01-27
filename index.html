@@ -220,7 +220,7 @@
             <div id="view-prompt-helper" class="hidden grid-cols-1 lg:grid-cols-12 gap-6">
                 <div class="lg:col-span-8 space-y-6">
                     <div
-                        class="glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden flex flex-col min-h-[600px] h-full">
+                        class="glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden flex flex-col self-start min-h-[600px]">
                         <div class="h-1.5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
                         <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-white/40">
                             <div class="flex items-center gap-3">
@@ -268,16 +268,20 @@
                                             class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse hidden shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
                                         <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> 优化后的提示词
                                     </span>
-                                    <button id="btn-copy-helper" disabled
-                                        class="group text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed font-medium">
-                                        <i data-lucide="copy"
-                                            class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                        <span id="copy-text-helper">复制</span>
-                                    </button>
+                                    <div class="flex items-center gap-3">
+                                        <span id="output-char-count-helper"
+                                            class="text-xs font-mono text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md font-semibold">0 字符</span>
+                                        <button id="btn-copy-helper" disabled
+                                            class="group text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed font-medium">
+                                            <i data-lucide="copy"
+                                                class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                                            <span id="copy-text-helper">复制</span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="px-5 pb-5 relative z-10 h-[28rem] min-h-[28rem] max-h-[28rem]">
+                                <div class="px-5 pb-5 relative z-10">
                                     <textarea id="output-prompt-helper" readonly
-                                        class="w-full h-full box-border p-4 resize-none bg-white border-2 border-slate-200/80 rounded-xl text-slate-800 font-mono text-sm leading-relaxed outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-400 transition-all shadow-sm hidden"></textarea>
+                                        class="w-full min-h-[12rem] h-auto box-border p-4 resize-none bg-white border-2 border-slate-200/80 rounded-xl text-slate-800 font-mono text-sm leading-relaxed outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-400 transition-all shadow-sm hidden"></textarea>
                                     <div id="output-placeholder-helper"
                                         class="absolute inset-0 flex flex-col items-center justify-center text-slate-300 pointer-events-none p-8 text-center">
                                         <div
@@ -312,14 +316,14 @@
                     <!-- Prompt Helper Reasoning Card -->
                     <div id="reasoning-card-helper"
                         class="hidden glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden mt-6 animate-fade-in-up">
-                        <div class="p-5 border-b border-slate-100 bg-white/40 flex items-center justify-between gap-3">
+                        <div class="p-5 border-b border-slate-100 bg-white/40 flex items-center gap-3">
                             <div
                                 class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
                                 <i data-lucide="lightbulb" class="w-4 h-4"></i>
                             </div>
                             <h3 class="font-bold text-slate-800 text-sm">优化思路</h3>
                             <button id="btn-copy-reasoning-helper"
-                                class="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100">
+                                class="ml-auto text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100">
                                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                                 <span>复制</span>
                             </button>
@@ -412,7 +416,7 @@
                 <!-- Main Workspace (Left) -->
                 <div class="lg:col-span-8 space-y-6">
                     <div
-                        class="glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden flex flex-col min-h-[600px] h-full">
+                        class="glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden flex flex-col self-start min-h-[600px]">
                         <!-- Header Strip -->
                         <div class="h-1.5 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
 
@@ -469,12 +473,16 @@
                                             class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse hidden shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
                                         <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> 优化结果
                                     </span>
-                                    <button id="btn-copy" disabled
-                                        class="group text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed font-medium">
-                                        <i data-lucide="copy"
-                                            class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                        <span id="copy-text">复制</span>
-                                    </button>
+                                    <div class="flex items-center gap-3">
+                                        <span id="output-char-count"
+                                            class="text-xs font-mono text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md font-semibold">0 字符</span>
+                                        <button id="btn-copy" disabled
+                                            class="group text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100 disabled:opacity-50 disabled:cursor-not-allowed font-medium">
+                                            <i data-lucide="copy"
+                                                class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                                            <span id="copy-text">复制</span>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="px-5 pb-5 relative z-10 h-[28rem] min-h-[28rem] max-h-[28rem]">
                 <textarea id="output-prompt" readonly
@@ -517,14 +525,14 @@
                     <!-- Instruction Optimization Reasoning Card -->
                     <div id="reasoning-card"
                         class="hidden glass-panel rounded-2xl shadow-xl shadow-indigo-100/50 overflow-hidden mt-6 animate-fade-in-up">
-                        <div class="p-5 border-b border-slate-100 bg-white/40 flex items-center justify-between gap-3">
+                        <div class="p-5 border-b border-slate-100 bg-white/40 flex items-center gap-3">
                             <div
                                 class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
                                 <i data-lucide="lightbulb" class="w-4 h-4"></i>
                             </div>
                             <h3 class="font-bold text-slate-800 text-sm">优化思路</h3>
                             <button id="btn-copy-reasoning"
-                                class="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100">
+                                class="ml-auto text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent hover:border-emerald-100">
                                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                                 <span>复制</span>
                             </button>
@@ -1503,6 +1511,7 @@
                 charCount: document.getElementById('char-count'),
                 btnClearInput: document.getElementById('btn-clear-input'),
                 outputPrompt: document.getElementById('output-prompt'),
+                outputCharCount: document.getElementById('output-char-count'),
                 outputPlaceholder: document.getElementById('output-placeholder'),
                 outputIndicator: document.getElementById('output-indicator'),
                 btnCopy: document.getElementById('btn-copy'),
@@ -1520,6 +1529,7 @@
                 charCountHelper: document.getElementById('char-count-helper'),
                 btnClearInputHelper: document.getElementById('btn-clear-input-helper'),
                 outputPromptHelper: document.getElementById('output-prompt-helper'),
+                outputCharCountHelper: document.getElementById('output-char-count-helper'),
                 outputPlaceholderHelper: document.getElementById('output-placeholder-helper'),
                 outputIndicatorHelper: document.getElementById('output-indicator-helper'),
                 btnCopyHelper: document.getElementById('btn-copy-helper'),
@@ -2745,6 +2755,8 @@
                     els.inputPrompt.value = '';
                     els.charCount.textContent = '0 字符';
                     els.btnOptimize.disabled = true;
+                    if (els.outputPrompt) els.outputPrompt.value = '';
+                    if (els.outputCharCount) els.outputCharCount.textContent = '0 字符';
                     if (els.reasoningCard) els.reasoningCard.classList.add('hidden');
                     els.inputPrompt.focus();
                 });
@@ -2779,6 +2791,8 @@
                         if (els.inputPromptHelper) els.inputPromptHelper.value = '';
                         if (els.charCountHelper) els.charCountHelper.textContent = '0 字符';
                         if (els.btnOptimizeHelper) els.btnOptimizeHelper.disabled = true;
+                        if (els.outputPromptHelper) els.outputPromptHelper.value = '';
+                        if (els.outputCharCountHelper) els.outputCharCountHelper.textContent = '0 字符';
                         if (els.reasoningCardHelper) els.reasoningCardHelper.classList.add('hidden');
                         if (els.inputPromptHelper) els.inputPromptHelper.focus();
                     });
@@ -3665,6 +3679,7 @@
                         ];
                         const step1Result = await chatRequest(step1Messages, 0.7);
                         els.outputPrompt.value = step1Result || '';
+                        if (els.outputCharCount) els.outputCharCount.textContent = `${(els.outputPrompt.value || '').length} 字符`;
                         els.outputPrompt.classList.remove('hidden');
                         els.outputPlaceholder.classList.add('hidden');
                         els.outputIndicator.classList.remove('hidden');
@@ -3687,6 +3702,7 @@
                             els.reasoningCard.classList.remove('hidden');
                         }
                         els.outputPrompt.value = parsed.result;
+                        if (els.outputCharCount) els.outputCharCount.textContent = `${(els.outputPrompt.value || '').length} 字符`;
                         els.outputPrompt.classList.remove('hidden');
                         els.outputPlaceholder.classList.add('hidden');
                         els.outputIndicator.classList.remove('hidden');
@@ -3747,6 +3763,7 @@
                         ];
                         const step1Result = await chatRequest(step1Messages, 0.7);
                         if (els.outputPromptHelper) els.outputPromptHelper.value = step1Result || '';
+                        if (els.outputCharCountHelper) els.outputCharCountHelper.textContent = `${(els.outputPromptHelper && els.outputPromptHelper.value || '').length} 字符`;
                         if (els.outputPromptHelper) els.outputPromptHelper.classList.remove('hidden');
                         if (els.outputPlaceholderHelper) els.outputPlaceholderHelper.classList.add('hidden');
                         if (els.outputIndicatorHelper) els.outputIndicatorHelper.classList.remove('hidden');
@@ -3769,6 +3786,7 @@
                             els.reasoningCardHelper.classList.remove('hidden');
                         }
                         if (els.outputPromptHelper) els.outputPromptHelper.value = parsed.result;
+                        if (els.outputCharCountHelper) els.outputCharCountHelper.textContent = `${(els.outputPromptHelper && els.outputPromptHelper.value || '').length} 字符`;
                         if (els.outputPromptHelper) els.outputPromptHelper.classList.remove('hidden');
                         if (els.outputPlaceholderHelper) els.outputPlaceholderHelper.classList.add('hidden');
                         if (els.outputIndicatorHelper) els.outputIndicatorHelper.classList.remove('hidden');
